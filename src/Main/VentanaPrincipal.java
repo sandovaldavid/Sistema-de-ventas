@@ -34,10 +34,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        JmCliente = new javax.swing.JMenu();
+        JmVendedor = new javax.swing.JMenu();
+        JmProducto = new javax.swing.JMenu();
+        JmRuta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Ventas");
@@ -54,17 +54,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 449, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cliente");
-        jMenuBar1.add(jMenu1);
+        JmCliente.setText("Cliente");
+        jMenuBar1.add(JmCliente);
 
-        jMenu2.setText("Vendedor");
-        jMenuBar1.add(jMenu2);
+        JmVendedor.setText("Vendedor");
+        jMenuBar1.add(JmVendedor);
 
-        jMenu3.setText("Producto");
-        jMenuBar1.add(jMenu3);
+        JmProducto.setText("Producto");
+        jMenuBar1.add(JmProducto);
 
-        jMenu4.setText("Ruta");
-        jMenuBar1.add(jMenu4);
+        JmRuta.setText("Ruta");
+        jMenuBar1.add(JmRuta);
 
         setJMenuBar(jMenuBar1);
 
@@ -123,11 +123,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JmCliente;
+    private javax.swing.JMenu JmProducto;
+    private javax.swing.JMenu JmRuta;
+    private javax.swing.JMenu JmVendedor;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
