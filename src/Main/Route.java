@@ -11,6 +11,6 @@ package Main;
  * @Fecha 7 jul. 2023
  *
  */
-public class Ruta extends Archivo {
+public class Route extends Archivo {
 
 }
