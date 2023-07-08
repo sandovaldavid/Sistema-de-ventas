@@ -18,40 +18,40 @@ import java.io.RandomAccessFile;
  */
 public class Archivo {
 
-    private final String ruta = "C:\\Users\\Sando\\OneDrive\\Documentos\\Programas\\Sistema-de-ventas\\Archivos";
-    private String NameFile;
-    private String ExtensionFile;
+    private final String FilePath = "C:\\Users\\Sando\\OneDrive\\Documentos\\Programas\\Sistema-de-ventas\\Archivos\\";
+    private String FileName;
+    private String FileExtension;
     private File File;
     private RandomAccessFile IA;
     private Header cab;
 
-    public Archivo(String NameFile, String ExtensionFile) {
-        this.NameFile = NameFile;
-        this.ExtensionFile = ExtensionFile;
-        this.File = new File(NameFile + "." + ExtensionFile);
+    public Archivo(String FileName, String FileExtension) {
+        this.FileName = FileName;
+        this.FileExtension = FileExtension;
+        this.File = new File(this.FilePath + FileName + "." + FileExtension);
         this.cab = new Header();
     }
 
     public Archivo() {
-        this.NameFile = null;
-        this.ExtensionFile = null;
+        this.FileName = null;
+        this.FileExtension = null;
         this.File = null;
     }
 
-    public String getNameFile() {
-        return NameFile;
+    public String getFileName() {
+        return FileName;
     }
 
-    public void setNameFile(String NameFile) {
-        this.NameFile = NameFile;
+    public void setFileName(String FileName) {
+        this.FileName = FileName;
     }
 
-    public String getExtensionFile() {
-        return ExtensionFile;
+    public String getFileExtension() {
+        return FileExtension;
     }
 
-    public void setExtensionFile(String ExtensionFile) {
-        this.ExtensionFile = ExtensionFile;
+    public void setFileExtension(String FileExtension) {
+        this.FileExtension = FileExtension;
     }
 
     public File getFile() {
