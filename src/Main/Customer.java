@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  */
 public class Customer extends Archivo {
-    
+
     private String DNI;                 //Char(8)  --> 10 bytes
     private String FirstName;           //Char(20) --> 22 bytes
     private String SecondName;          //Char(20) --> 22 bytes
@@ -36,11 +36,10 @@ public class Customer extends Archivo {
     //-------------------------
     //Total    --> 241 bytes
 
-    public Customer(String NombreArchivo, String Extension) {
-        super(NombreArchivo, Extension);
-        
+    public Customer(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
     }
-    
+
     public Customer(String DNI, String FirstName, String SecondName, String FirstLastName, String SecondLastName, String Nationality, String PhoneNumber, String CellphoneNumber, String Addrees, String RUC, int Age, Date BirthdayDate) {
         this.DNI = DNI;
         this.FirstName = FirstName;
@@ -56,143 +55,143 @@ public class Customer extends Archivo {
         this.BirthdayDate = BirthdayDate;
         this.Active = (byte) 1;
     }
-    
+
     public String getDNI() {
         return DNI;
     }
-    
+
     public void setDNI(String DNI) {
         this.DNI = DNI;
     }
-    
+
     public String getFirstName() {
         return FirstName;
     }
-    
+
     public void setFirstName(String FirstName) {
         this.FirstName = FirstName;
     }
-    
+
     public String getSecondName() {
         return SecondName;
     }
-    
+
     public void setSecondName(String SecondName) {
         this.SecondName = SecondName;
     }
-    
+
     public String getFirstLastName() {
         return FirstLastName;
     }
-    
+
     public void setFirstLastName(String FirstLastName) {
         this.FirstLastName = FirstLastName;
     }
-    
+
     public String getSecondLastName() {
         return SecondLastName;
     }
-    
+
     public void setSecondLastName(String SecondLastName) {
         this.SecondLastName = SecondLastName;
     }
-    
+
     public String getNationality() {
         return Nationality;
     }
-    
+
     public void setNationality(String Nationality) {
         this.Nationality = Nationality;
     }
-    
+
     public String getPhoneNumber() {
         return PhoneNumber;
     }
-    
+
     public void setPhoneNumber(String PhoneNumber) {
         this.PhoneNumber = PhoneNumber;
     }
-    
+
     public String getCellphoneNumber() {
         return CellphoneNumber;
     }
-    
+
     public void setCellphoneNumber(String CellphoneNumber) {
         this.CellphoneNumber = CellphoneNumber;
     }
-    
+
     public String getAddrees() {
         return Addrees;
     }
-    
+
     public void setAddrees(String Addrees) {
         this.Addrees = Addrees;
     }
-    
+
     public String getRUC() {
         return RUC;
     }
-    
+
     public void setRUC(String RUC) {
         this.RUC = RUC;
     }
-    
+
     public int getAge() {
         return Age;
     }
-    
+
     public void setAge(int Age) {
         this.Age = Age;
     }
-    
+
     public Date getBirthdayDate() {
         return BirthdayDate;
     }
-    
+
     public void setBirthdayDate(Date BirthdayDate) {
         this.BirthdayDate = BirthdayDate;
     }
-    
+
     public byte getActive() {
         return Active;
     }
-    
+
     public void setActive(byte Active) {
         this.Active = Active;
     }
-    
+
     public int getSize() {
         return 241;
     }
-    
+
     public String getBirthdayDateString() {
         return Date_String(getBirthdayDate());
     }
-    
+
     @Override
     public long CalculateNRR(int pos) {
         return getCab().getSize() + pos * getSize();
     }
-    
+
     @Override
     public void Position(int pos) throws IOException {
         long NRR = CalculateNRR(pos);
         getIA().seek(NRR);
     }
-    
+
     public String Date_String(Date Fecha) {
         SimpleDateFormat Fecha_Date = new SimpleDateFormat("dd/MM/yyyy");
         String Fecha_cadena = Fecha_Date.format(Fecha);
         return Fecha_cadena;
     }
-    
+
     public Date String_Date(String Fecha) throws ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         fechaDate = formato.parse(Fecha);
         return fechaDate;
     }
-    
+
     @Override
     public void Write() throws IOException {
         getIA().writeUTF(String.format("%8.8s", getDNI()));
@@ -209,7 +208,7 @@ public class Customer extends Archivo {
         getIA().writeUTF(String.format("%8.8s", getBirthdayDateString()));
         getIA().writeByte(getActive());
     }
-    
+
     @Override
     public void Read() throws IOException {
         setDNI(getIA().readUTF().trim());
@@ -231,7 +230,7 @@ public class Customer extends Archivo {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
         setActive(getIA().readByte());
-        
+
     }
-    
+
 }
