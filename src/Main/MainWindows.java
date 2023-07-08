@@ -14,12 +14,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author David Sandoval Salvador
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class MainWindows extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public MainWindows() {
         initComponents();
     }
 
@@ -101,24 +101,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
                 }
             } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             //</editor-fold>
             UIManager.setLookAndFeel(new FlatArcIJTheme());
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(() -> {
-                VentanaPrincipal v = new VentanaPrincipal();
+                MainWindows v = new MainWindows();
                 v.setVisible(true);
                 v.setLocationRelativeTo(null);
             });
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainWindows.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
