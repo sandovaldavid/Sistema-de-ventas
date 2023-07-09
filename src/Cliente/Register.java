@@ -14,12 +14,12 @@ import javax.swing.UIManager;
  *
  * @author David Sandoval Salvador
  */
-public class Registrar extends javax.swing.JInternalFrame {
+public class Register extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Registrar
      */
-    public Registrar() {
+    public Register() {
         initComponents();
 
     }
