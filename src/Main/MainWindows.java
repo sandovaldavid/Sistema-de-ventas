@@ -4,9 +4,13 @@
  */
 package Main;
 
+import Cliente.Registrar;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -21,6 +25,10 @@ public class MainWindows extends javax.swing.JFrame {
      */
     public MainWindows() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/img/Sales_Systems.png")).getImage());
+        ImageIcon ImgCRegister = new ImageIcon(getClass().getResource("/img/Register_Customer.png"));
+        //ImgCRegister = new ImageIcon(ImgCRegister.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+        JmCRegistrar.setIcon(ImgCRegister);
     }
 
     /**
@@ -35,26 +43,38 @@ public class MainWindows extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmCliente = new javax.swing.JMenu();
+        JmCRegistrar = new javax.swing.JMenuItem();
         JmVendedor = new javax.swing.JMenu();
         JmProducto = new javax.swing.JMenu();
         JmRuta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Ventas");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 787, Short.MAX_VALUE)
+            .addGap(0, 1003, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+
         JmCliente.setText("Cliente");
+
+        JmCRegistrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JmCRegistrar.setText("Registrar");
+        JmCRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCRegistrarActionPerformed(evt);
+            }
+        });
+        JmCliente.add(JmCRegistrar);
+
         jMenuBar1.add(JmCliente);
 
         JmVendedor.setText("Vendedor");
@@ -82,11 +102,22 @@ public class MainWindows extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JmCRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCRegistrarActionPerformed
+        // TODO add your handling code here:
+        Registrar ic = new Registrar();
+        escritorio.add(ic);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = ic.getSize();
+        ic.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        ic.show();
+
+    }//GEN-LAST:event_JmCRegistrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         try {
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -100,13 +131,7 @@ public class MainWindows extends javax.swing.JFrame {
                         break;
                     }
                 }
-            } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
                 java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             //</editor-fold>
@@ -123,6 +148,7 @@ public class MainWindows extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmCRegistrar;
     private javax.swing.JMenu JmCliente;
     private javax.swing.JMenu JmProducto;
     private javax.swing.JMenu JmRuta;
