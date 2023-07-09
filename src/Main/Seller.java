@@ -13,4 +13,7 @@ package Main;
  */
 public class Seller extends Archivo {
 
+    public Seller(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
+    }
 }

@@ -13,4 +13,7 @@ package Main;
  */
 public class Route extends Archivo {
 
+    public Route(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
+    }
 }
