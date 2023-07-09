@@ -4,9 +4,8 @@
  */
 package Main;
 
-import Cliente.Registrar;
+import Cliente.Register;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,7 +103,7 @@ public class MainWindows extends javax.swing.JFrame {
 
     private void JmCRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCRegistrarActionPerformed
         // TODO add your handling code here:
-        Registrar ic = new Registrar();
+        Register ic = new Register();
         escritorio.add(ic);
         Dimension desktopSize = escritorio.getSize();
         Dimension FrameSize = ic.getSize();
