@@ -17,9 +17,9 @@ import java.io.RandomAccessFile;
 public class Header {
 
     private RandomAccessFile IACab;
-    private long RecordsNumber;         //long 8 bytes
-    private long RecordsNumberDeleted;  //long 8 bytes
-    private int RecordSize;             //int  4 bytes
+    private int RecordsNumber;         //int 4 bytes
+    private int RecordsNumberDeleted;  //int 4 bytes
+    private int RecordSize;            //int 4 bytes
     //                                  ----------------
     //                                  total = 20 bytes
 
@@ -37,11 +37,11 @@ public class Header {
         this.IACab = IACab;
     }
 
-    public long getRecordsNumber() {
+    public int getRecordsNumber() {
         return RecordsNumber;
     }
 
-    public void setRecordsNumber(long RecordsNumber) {
+    public void setRecordsNumber(int RecordsNumber) {
         this.RecordsNumber = RecordsNumber;
     }
 
@@ -53,16 +53,16 @@ public class Header {
         this.RecordSize = RecordSize;
     }
 
-    public long getRecordsNumberDeleted() {
+    public int getRecordsNumberDeleted() {
         return RecordsNumberDeleted;
     }
 
-    public void setRecordsNumberDeleted(long RecordsNumberDeleted) {
+    public void setRecordsNumberDeleted(int RecordsNumberDeleted) {
         this.RecordsNumberDeleted = RecordsNumberDeleted;
     }
 
     public int getSize() {
-        return 20;
+        return 12;
     }
 
     @Override
@@ -75,14 +75,14 @@ public class Header {
     }
 
     public void Write() throws IOException {
-        getIACab().writeLong(getRecordsNumber());
-        getIACab().writeLong(getRecordsNumberDeleted());
+        getIACab().writeInt(getRecordsNumber());
+        getIACab().writeInt(getRecordsNumberDeleted());
         getIACab().writeInt(getRecordSize());
     }
 
     public void Read() throws IOException {
-        setRecordsNumber(getIACab().readLong());
-        setRecordsNumberDeleted(getIACab().readLong());
+        setRecordsNumber(getIACab().readInt());
+        setRecordsNumberDeleted(getIACab().readInt());
         setRecordSize(getIACab().readInt());
     }
 }
