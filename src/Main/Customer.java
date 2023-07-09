@@ -210,4 +210,27 @@ public class Customer extends Archivo {
 
     }
 
+    public Customer[] SequentialList() throws IOException {
+        Customer[] c = new Customer[getCab().getRecordsNumber() - getCab().getRecordsNumberDeleted()];
+        Customer cust;
+        int i = 0;
+        boolean flag = true;
+        Position(0);
+        Read();
+        while (flag) {
+            try {
+                if (getActive() == 1) {
+                    cust = new Customer(getDNI(), getName(), getLastName(), getNationality(),
+                            getPhoneNumber(), getCellphoneNumber(), getAddrees(), getRUC(),
+                            getAge(), getBirthdayDate());
+                    c[i] = cust;
+                }
+                Read();
+            } catch (EOFException ex) {
+                flag = false;
+            }
+            i++;
+        }
+        return c;
+    }
 }
