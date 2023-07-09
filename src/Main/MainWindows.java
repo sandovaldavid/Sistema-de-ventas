@@ -7,6 +7,7 @@ package Main;
 import Cliente.Register;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Dimension;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -140,6 +141,20 @@ public class MainWindows extends javax.swing.JFrame {
                 MainWindows v = new MainWindows();
                 v.setVisible(true);
                 v.setLocationRelativeTo(null);
+                Archivo[] archivos = new Archivo[1];
+                Customer c = new Customer("Customer", "dat");
+                archivos[0] = c;
+                int i = 0;
+                for (Archivo archivo : archivos) {
+                    try {
+                        archivo.CreateNewFile();
+                        archivo.getCab().setRecordSize(c.getSize());
+                        archivo.getCab().position();
+                        archivo.getCab().Write();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MainWindows.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             });
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainWindows.class.getName()).log(Level.SEVERE, null, ex);
