@@ -174,6 +174,11 @@ public class Customer extends Archivo {
     }
 
     @Override
+    public String toString() {
+        return "Customer{" + "DNI=" + DNI + ", Name=" + Name + ", LastName=" + LastName + ", Nationality=" + Nationality + ", PhoneNumber=" + PhoneNumber + ", CellphoneNumber=" + CellphoneNumber + ", Addrees=" + Addrees + ", RUC=" + RUC + ", Age=" + Age + ", BirthdayDate=" + BirthdayDate + ", Active=" + Active + '}';
+    }
+
+    @Override
     public void Write() throws IOException {
         getIA().writeUTF(String.format("%8.8s", getDNI()));
         getIA().writeUTF(String.format("%30.30s", getName()));
