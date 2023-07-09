@@ -233,4 +233,22 @@ public class Customer extends Archivo {
         }
         return c;
     }
+
+    public int SequentialSearch(String DNI) throws IOException {
+        int answer = -1;
+        int i = 0;
+        boolean flag = true;
+        Position(0);
+        Read();
+        while (flag && answer == -1) {
+            if (getActive() == 1) {
+                if (DNI.equals(getDNI())) {
+                    answer = i;
+                }
+            }
+            Read();
+            i++;
+        }
+        return answer;
+    }
 }
