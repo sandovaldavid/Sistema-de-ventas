@@ -21,7 +21,7 @@ public class Header {
     private int RecordsNumberDeleted;  //int 4 bytes
     private int RecordSize;            //int 4 bytes
     //                                  ----------------
-    //                                  total = 20 bytes
+    //                                  total = 12 bytes
 
     public Header() {
         this.RecordsNumber = 0;
