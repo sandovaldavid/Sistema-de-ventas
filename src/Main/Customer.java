@@ -256,6 +256,7 @@ public class Customer extends Archivo {
                 if (getActive() == 1) {
                     if (DNI.equals(getDNI())) {
                         answer = i;
+                        flag = false;
                     }
                 }
                 i++;
