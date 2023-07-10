@@ -20,6 +20,33 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainWindows extends javax.swing.JFrame {
 
+    private static Archivo[] archivos;
+    private static Customer customer;
+
+    public static Customer getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(Customer customer) {
+        MainWindows.customer = customer;
+    }
+
+    public static Archivo getArchivo(int i) {
+        return archivos[i];
+    }
+
+    public static void setArchivo(Archivo archivo, int i) {
+        MainWindows.archivos[i] = archivo;
+    }
+
+    public static Archivo[] getArchivos() {
+        return archivos;
+    }
+
+    public static void setArchivos(Archivo[] archivos) {
+        MainWindows.archivos = archivos;
+    }
+
     /**
      * Creates new form VentanaPrincipal
      */
@@ -141,7 +168,7 @@ public class MainWindows extends javax.swing.JFrame {
                 MainWindows v = new MainWindows();
                 v.setVisible(true);
                 v.setLocationRelativeTo(null);
-                Archivo[] archivos = new Archivo[1];
+                archivos = new Archivo[1];
                 Customer c = new Customer("Customer", "dat");
                 archivos[0] = c;
                 int i = 0;
@@ -155,6 +182,7 @@ public class MainWindows extends javax.swing.JFrame {
                         Logger.getLogger(MainWindows.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                setCustomer(c);
             });
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainWindows.class.getName()).log(Level.SEVERE, null, ex);
