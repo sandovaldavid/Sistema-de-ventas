@@ -259,4 +259,12 @@ public class Customer extends Archivo {
         }
         return answer;
     }
+
+    public int WindowJOption(JInternalFrame ic, Color color, String IcoRoute, String mensaje, String titulo) {
+        UIManager.put("OptionPane.background", color);
+        Icon icoExit = new ImageIcon(getClass().getResource(IcoRoute));
+        Object[] options = {"Si", "No"};
+        int answer = JOptionPane.showOptionDialog(ic, mensaje, titulo, JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, icoExit, options, options[0]);
+        return answer;
+    }
 }
