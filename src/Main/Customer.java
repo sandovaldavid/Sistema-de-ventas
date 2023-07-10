@@ -282,4 +282,20 @@ public class Customer extends Archivo {
         }
     }
 
+    public void Register(JInternalFrame ic) throws IOException {
+        int answer = SequentialSearch(getDNI());
+        if (answer == -1) {
+            int answerJoptionPane = WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "¿Seguro que desea guradar el registro?", "Guardar");
+            if (answerJoptionPane == 0) {
+                Position(getCab().getRecordsNumber());
+                Write();
+                getCab().setRecordsNumber(getCab().getRecordsNumber() + 1);
+                getCab().position();
+                getCab().Write();
+            }
+        } else {
+            WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "El registro con el DNI: " + getDNI() + " ya existe", "Advertencia");
+        }
+    }
+
 }
