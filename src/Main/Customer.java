@@ -4,6 +4,7 @@
  */
 package Main;
 
+import java.awt.Color;
 import java.io.EOFException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -11,6 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -267,4 +273,13 @@ public class Customer extends Archivo {
         int answer = JOptionPane.showOptionDialog(ic, mensaje, titulo, JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, icoExit, options, options[0]);
         return answer;
     }
+
+    public void WindowExit(JInternalFrame ic, String WindowName) {
+
+        int answer = WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "¿Desea salir de la ventana " + WindowName + " ?", "Salir");
+        if (answer == 0) {
+            ic.dispose();
+        }
+    }
+
 }
