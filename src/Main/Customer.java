@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 public class Customer extends Archivo {
 
     private String DNI;                 //Char(8)  --> 10 bytes
-    private String Name;                //Char(30) --> 42 bytes
-    private String LastName;            //Char(50) --> 52 bytes
+    private String Name;                //Char(30) --> 32 bytes
+    private String LastName;            //Char(40) --> 42 bytes
     private String Nationality;         //Char(20) --> 22 bytes
     private String PhoneNumber;         //Char(9)  --> 11 bytes
     private String CellphoneNumber;     //Char(9)  --> 11 bytes
@@ -33,7 +33,7 @@ public class Customer extends Archivo {
     private Date BirthdayDate;          //Date     --> 22 bytes (save the date like string.)
     private byte Active;                //byte     --> 1  byte  (1 -> true and 0 -> false)
     //-------------------------
-    //Total    --> 229 bytes
+    //Total    --> 209 bytes
 
     public Customer(String FileName, String FileExtension) {
         super(FileName, FileExtension);
@@ -142,7 +142,7 @@ public class Customer extends Archivo {
     }
 
     public int getSize() {
-        return 227;
+        return 209;
     }
 
     public String getBirthdayDateString() {
