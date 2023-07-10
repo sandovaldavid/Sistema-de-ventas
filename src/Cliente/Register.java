@@ -95,11 +95,6 @@ public class Register extends javax.swing.JInternalFrame {
         txtNationality.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         txtPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneNumberActionPerformed(evt);
-            }
-        });
 
         txtCellPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -233,10 +228,6 @@ public class Register extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneNumberActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
             customer.setDNI(txtDNI.getText());
@@ -249,6 +240,7 @@ public class Register extends javax.swing.JInternalFrame {
             customer.setPhoneNumber(txtPhoneNumber.getText());
             customer.setCellphoneNumber(txtCellPhoneNumber.getText());
             customer.setRUC(txtRUC.getText());
+            customer.setActive((byte) 1);
             customer.Register(this);
         } catch (IOException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
