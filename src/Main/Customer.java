@@ -244,15 +244,18 @@ public class Customer extends Archivo {
         int i = 0;
         boolean flag = true;
         Position(0);
-        Read();
         while (flag && answer == -1) {
-            if (getActive() == 1) {
-                if (DNI.equals(getDNI())) {
-                    answer = i;
+            try {
+                Read();
+                if (getActive() == 1) {
+                    if (DNI.equals(getDNI())) {
+                        answer = i;
+                    }
                 }
+                i++;
+            } catch (EOFException e) {
+                flag = false;
             }
-            Read();
-            i++;
         }
         return answer;
     }
