@@ -11,6 +11,9 @@ package Main;
  * @Fecha 7 jul. 2023
  *
  */
-public class Ruta extends Archivo {
+public class Seller extends Archivo {
 
+    public Seller(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
+    }
 }

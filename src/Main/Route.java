@@ -11,6 +11,9 @@ package Main;
  * @Fecha 7 jul. 2023
  *
  */
-public class Producto extends Archivo {
+public class Route extends Archivo {
 
+    public Route(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
+    }
 }

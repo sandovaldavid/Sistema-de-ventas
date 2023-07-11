@@ -11,6 +11,9 @@ package Main;
  * @Fecha 7 jul. 2023
  *
  */
-public class Cabecera {
+public class Product extends Archivo {
 
+    public Product(String FileName, String FileExtension) {
+        super(FileName, FileExtension);
+    }
 }
