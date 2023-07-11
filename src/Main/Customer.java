@@ -227,16 +227,15 @@ public class Customer extends Archivo {
         int i = 0;
         boolean flag = true;
         Position(0);
-        Read();
         while (flag) {
             try {
+                Read();
                 if (getActive() == 1) {
                     cust = new Customer(getDNI(), getName(), getLastName(), getNationality(),
                             getPhoneNumber(), getCellphoneNumber(), getAddrees(), getRUC(),
                             getAge(), getBirthdayDate());
                     c[i] = cust;
                 }
-                Read();
             } catch (EOFException ex) {
                 flag = false;
             }
@@ -283,11 +282,12 @@ public class Customer extends Archivo {
         }
     }
 
-    public void Register(JInternalFrame ic) throws IOException {
-        int answer = SequentialSearch(getDNI());
+    public void Register(JInternalFrame ic, Customer customer) throws IOException {
+        int answer = SequentialSearch(customer.getDNI());
         if (answer == -1) {
             int answerJoptionPane = WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "¿Seguro que desea guradar el registro?", "Guardar");
             if (answerJoptionPane == 0) {
+                NewCustomer(customer);
                 Position(getCab().getRecordsNumber());
                 Write();
                 getCab().setRecordsNumber(getCab().getRecordsNumber() + 1);
@@ -297,6 +297,20 @@ public class Customer extends Archivo {
         } else {
             WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "El registro con el DNI: " + getDNI() + " ya existe", "Advertencia");
         }
+    }
+
+    public void NewCustomer(Customer customer) {
+        setDNI(customer.getDNI());
+        setName(customer.getName());
+        setLastName(customer.getLastName());
+        setNationality(customer.getNationality());
+        setPhoneNumber(customer.getPhoneNumber());
+        setCellphoneNumber(customer.getCellphoneNumber());
+        setAddrees(customer.getAddrees());
+        setRUC(customer.getRUC());
+        setAge(customer.getAge());
+        setBirthdayDate(customer.getBirthdayDate());
+        setActive(customer.getActive());
     }
 
 }
