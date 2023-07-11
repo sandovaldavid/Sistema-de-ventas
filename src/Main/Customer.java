@@ -12,11 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
@@ -266,22 +262,6 @@ public class Customer extends Archivo {
         return answer;
     }
 
-    public int WindowJOption(JInternalFrame ic, Color color, String IcoRoute, String mensaje, String titulo) {
-        UIManager.put("OptionPane.background", color);
-        Icon icoExit = new ImageIcon(getClass().getResource(IcoRoute));
-        Object[] options = {"Si", "No"};
-        int answer = JOptionPane.showOptionDialog(ic, mensaje, titulo, JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, icoExit, options, options[0]);
-        return answer;
-    }
-
-    public void WindowExit(JInternalFrame ic, String WindowName) {
-
-        int answer = WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "¿Desea salir de la ventana " + WindowName + " ?", "Salir");
-        if (answer == 0) {
-            ic.dispose();
-        }
-    }
-
     public void Register(JInternalFrame ic, Customer customer) throws IOException {
         int answer = SequentialSearch(customer.getDNI());
         if (answer == -1) {
@@ -295,7 +275,7 @@ public class Customer extends Archivo {
                 getCab().Write();
             }
         } else {
-            WindowJOption(ic, new Color(190, 215, 233), "/img/exit_option.png", "El registro con el DNI: " + getDNI() + " ya existe", "Advertencia");
+            WindowJDialog(ic, new Color(190, 215, 233), "/img/warning01.png", "El registro con el DNI: " + getDNI() + " ya existe", "Advertencia");
         }
     }
 
