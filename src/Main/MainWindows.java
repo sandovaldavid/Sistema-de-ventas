@@ -4,6 +4,7 @@
  */
 package Main;
 
+import Cliente.CustomerList;
 import Cliente.Register;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Dimension;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -71,6 +73,7 @@ public class MainWindows extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         JmCliente = new javax.swing.JMenu();
         JmCRegistrar = new javax.swing.JMenuItem();
+        JmCList = new javax.swing.JMenuItem();
         JmVendedor = new javax.swing.JMenu();
         JmProducto = new javax.swing.JMenu();
         JmRuta = new javax.swing.JMenu();
@@ -101,6 +104,15 @@ public class MainWindows extends javax.swing.JFrame {
             }
         });
         JmCliente.add(JmCRegistrar);
+
+        JmCList.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JmCList.setText("Listado");
+        JmCList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCListActionPerformed(evt);
+            }
+        });
+        JmCliente.add(JmCList);
 
         jMenuBar1.add(JmCliente);
 
@@ -133,12 +145,24 @@ public class MainWindows extends javax.swing.JFrame {
         // TODO add your handling code here:
         Register ic = new Register();
         escritorio.add(ic);
-        Dimension desktopSize = escritorio.getSize();
-        Dimension FrameSize = ic.getSize();
-        ic.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        CenterWindow(ic);
         ic.show();
 
     }//GEN-LAST:event_JmCRegistrarActionPerformed
+
+    private void JmCListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCListActionPerformed
+        // TODO add your handling code here:
+        CustomerList ic = new CustomerList();
+        escritorio.add(ic);
+        CenterWindow(ic);
+        ic.show();
+    }//GEN-LAST:event_JmCListActionPerformed
+
+    public void CenterWindow(JInternalFrame ic) {
+        Dimension desktopSize = escritorio.getSize();
+        Dimension FrameSize = ic.getSize();
+        ic.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }
 
     /**
      * @param args the command line arguments
@@ -190,6 +214,7 @@ public class MainWindows extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmCList;
     private javax.swing.JMenuItem JmCRegistrar;
     private javax.swing.JMenu JmCliente;
     private javax.swing.JMenu JmProducto;
