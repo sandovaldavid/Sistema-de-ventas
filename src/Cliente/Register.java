@@ -230,18 +230,18 @@ public class Register extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
-            customer.setDNI(txtDNI.getText());
-            customer.setName(txtName.getText());
-            customer.setLastName(txtLastName.getText());
-            customer.setNationality(txtNationality.getText());
-            customer.setBirthdayDate(jdcBirthdayDate.getDate());
-            customer.setAge(Integer.parseInt(txtAge.getText()));
-            customer.setAddrees(txtAddress.getText());
-            customer.setPhoneNumber(txtPhoneNumber.getText());
-            customer.setCellphoneNumber(txtCellPhoneNumber.getText());
-            customer.setRUC(txtRUC.getText());
-            customer.setActive((byte) 1);
-            customer.Register(this);
+            Customer cst = new Customer(txtDNI.getText(),
+                    txtName.getText(),
+                    txtLastName.getText(),
+                    txtNationality.getText(),
+                    txtPhoneNumber.getText(),
+                    txtCellPhoneNumber.getText(),
+                    txtAddress.getText(),
+                    txtRUC.getText(),
+                    Integer.parseInt(txtAge.getText()),
+                    jdcBirthdayDate.getDate()
+            );
+            customer.Register(this, cst);
         } catch (IOException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -46,25 +46,19 @@ public class CustomerList extends javax.swing.JInternalFrame {
         btnCustomerList = new javax.swing.JButton();
 
         setClosable(true);
+        setMaximizable(true);
 
         jScrollPane1.setAutoscrolls(true);
 
+        JTableCustomer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "DNI", "Nombre", "Apellido", "Nacionalidad", "Edad", "Télefono", "Celular", "Dirección", "RUC", "Fecha Nac."
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(JTableCustomer);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -87,9 +81,9 @@ public class CustomerList extends javax.swing.JInternalFrame {
                 .addGap(228, 228, 228)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -100,8 +94,8 @@ public class CustomerList extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnCustomerList))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -127,6 +121,7 @@ public class CustomerList extends javax.swing.JInternalFrame {
 
     private void setDatos() {
         Object[] datos1 = new Object[dmCustomers.getColumnCount()];
+        dmCustomers.setRowCount(0);
         for (Customer c : customerlist) {
             datos1[0] = c.getDNI();
             datos1[1] = c.getName();
@@ -143,13 +138,28 @@ public class CustomerList extends javax.swing.JInternalFrame {
         JTableCustomer.setModel(dmCustomers);
     }
 
+    public void ColumnSize() {
+        TableColumnModel columnModel = JTableCustomer.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(80);//DN1
+        columnModel.getColumn(1).setPreferredWidth(100);//Nombre
+        columnModel.getColumn(2).setPreferredWidth(200);//Apellido
+        columnModel.getColumn(3).setPreferredWidth(200);//Direccion
+        columnModel.getColumn(4).setPreferredWidth(80);//Nacionalidad
+        columnModel.getColumn(5).setPreferredWidth(80);//RUC
+        columnModel.getColumn(6).setPreferredWidth(80);//Télefono
+        columnModel.getColumn(7).setPreferredWidth(80);//Celular
+        columnModel.getColumn(8).setPreferredWidth(30);//Edad
+        columnModel.getColumn(9).setPreferredWidth(80);//Fecha Nacimiento
+    }
+
     public void resizeColumnWidth(JTable table) {
         //Se obtiene el modelo de la columna
         TableColumnModel columnModel = table.getColumnModel();
         //Se obtiene el total de las columnas
         for (int column = 0; column < table.getColumnCount(); column++) {
             //Establecemos un valor minimo para el ancho de la columna
-            int width = 150; //Min Width
+            int width = 80; //Min Width
             //Obtenemos el numero de filas de la tabla
             for (int row = 0; row < table.getRowCount(); row++) {
                 //Obtenemos el renderizador de la tabla
@@ -157,7 +167,7 @@ public class CustomerList extends javax.swing.JInternalFrame {
                 //Creamos un objeto para preparar el renderer
                 Component comp = table.prepareRenderer(renderer, row, column);
                 //Establecemos el width segun el valor maximo del ancho de la columna
-                width = Math.max(comp.getPreferredSize().width + 1, width);
+                width = Math.max(comp.getPreferredSize().width + 10, width);
 
             }
             //Se establece una condicion para no sobrepasar el valor de 300
