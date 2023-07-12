@@ -4,6 +4,7 @@
  */
 package Main;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.io.EOFException;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
+import javax.swing.JTextField;
 
 /**
  *
@@ -231,11 +233,11 @@ public class Customer extends Archivo {
                             getPhoneNumber(), getCellphoneNumber(), getAddrees(), getRUC(),
                             getAge(), getBirthdayDate());
                     c[i] = cust;
+                    i++;
                 }
             } catch (EOFException ex) {
                 flag = false;
             }
-            i++;
         }
         return c;
     }
@@ -293,4 +295,47 @@ public class Customer extends Archivo {
         setActive(customer.getActive());
     }
 
+    public int Check(JInternalFrame ic, JTextField txtDNI, JTextField txtRUC, JTextField txtNationality, JTextField txtName, JTextField txtLastName, JTextField txtAddress, JDateChooser BirthdayDate, JTextField txtCellphoneNumber, JTextField txtPhoneNumber, JTextField txtAge) throws IOException {
+        int answer = SequentialSearch(txtDNI.getText().trim());
+        if (answer != -1) {
+            txtDNI.setText(getDNI());
+            txtRUC.setText(getRUC());
+            txtNationality.setText(getNationality());
+            txtName.setText(getName());
+            txtLastName.setText(getLastName());
+            txtAddress.setText(getAddrees());
+            BirthdayDate.setDate(getBirthdayDate());
+            txtCellphoneNumber.setText(getCellphoneNumber());
+            txtPhoneNumber.setText(getPhoneNumber());
+            txtAge.setText(getAge() + "");
+        } else {
+            WindowJDialog(ic, new Color(190, 215, 233), "/img/warning01.png", "El registro no existe.", "Advertencia");
+        }
+        return answer;
+    }
+
+    public void DeleteRecord(JInternalFrame ic, int answer) throws IOException {
+        int answerWindowJOption = WindowJOption(ic, new Color(190, 215, 233), "/img/Delete.png", "¿Seguro que desea eliminar este registro?", "Eliminar");
+        if (answerWindowJOption == 0) {
+            setActive((byte) 0);
+            Position(answer);
+            Write();
+            getCab().setRecordsNumberDeleted(getCab().getRecordsNumberDeleted() + 1);
+            getCab().position();
+            getCab().Write();
+        }
+    }
+
+    public void Clean(JTextField txtDNI, JTextField txtRUC, JTextField txtNationality, JTextField txtName, JTextField txtLastName, JTextField txtAddress, JDateChooser BirthdayDate, JTextField txtCellphoneNumber, JTextField txtPhoneNumber, JTextField txtAge) {
+        txtDNI.setText("");
+        txtName.setText("");
+        txtLastName.setText("");
+        txtNationality.setText("");
+        txtPhoneNumber.setText("");
+        txtCellphoneNumber.setText("");
+        txtAddress.setText("");
+        txtRUC.setText("");
+        txtAge.setText("");
+        BirthdayDate.setDate(new Date());
+    }
 }

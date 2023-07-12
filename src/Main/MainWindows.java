@@ -5,6 +5,7 @@
 package Main;
 
 import Cliente.CustomerList;
+import Cliente.DeleteCustomer;
 import Cliente.Register;
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import java.awt.Dimension;
@@ -55,9 +56,9 @@ public class MainWindows extends javax.swing.JFrame {
     public MainWindows() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/Sales_Systems.png")).getImage());
-        ImageIcon ImgCRegister = new ImageIcon(getClass().getResource("/img/Register_Customer.png"));
-        //ImgCRegister = new ImageIcon(ImgCRegister.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
-        JmCRegistrar.setIcon(ImgCRegister);
+//        ImageIcon ImgCRegister = new ImageIcon(getClass().getResource("/img/Register_Customer.png"));
+//        //ImgCRegister = new ImageIcon(ImgCRegister.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+//        JmCRegistrar.setIcon(ImgCRegister);
     }
 
     /**
@@ -74,6 +75,7 @@ public class MainWindows extends javax.swing.JFrame {
         JmCliente = new javax.swing.JMenu();
         JmCRegistrar = new javax.swing.JMenuItem();
         JmCList = new javax.swing.JMenuItem();
+        JmCDelete = new javax.swing.JMenuItem();
         JmVendedor = new javax.swing.JMenu();
         JmProducto = new javax.swing.JMenu();
         JmRuta = new javax.swing.JMenu();
@@ -97,6 +99,7 @@ public class MainWindows extends javax.swing.JFrame {
         JmCliente.setText("Cliente");
 
         JmCRegistrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JmCRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Register_Customer.png"))); // NOI18N
         JmCRegistrar.setText("Registrar");
         JmCRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +109,7 @@ public class MainWindows extends javax.swing.JFrame {
         JmCliente.add(JmCRegistrar);
 
         JmCList.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JmCList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ListCustomers.png"))); // NOI18N
         JmCList.setText("Listado");
         JmCList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +117,16 @@ public class MainWindows extends javax.swing.JFrame {
             }
         });
         JmCliente.add(JmCList);
+
+        JmCDelete.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JmCDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deleteCustomer.png"))); // NOI18N
+        JmCDelete.setText("Eliminar");
+        JmCDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCDeleteActionPerformed(evt);
+            }
+        });
+        JmCliente.add(JmCDelete);
 
         jMenuBar1.add(JmCliente);
 
@@ -157,6 +171,14 @@ public class MainWindows extends javax.swing.JFrame {
         CenterWindow(ic);
         ic.show();
     }//GEN-LAST:event_JmCListActionPerformed
+
+    private void JmCDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCDeleteActionPerformed
+        // TODO add your handling code here:
+        DeleteCustomer ic = new DeleteCustomer();
+        escritorio.add(ic);
+        CenterWindow(ic);
+        ic.show();
+    }//GEN-LAST:event_JmCDeleteActionPerformed
 
     public void CenterWindow(JInternalFrame ic) {
         Dimension desktopSize = escritorio.getSize();
@@ -214,6 +236,7 @@ public class MainWindows extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmCDelete;
     private javax.swing.JMenuItem JmCList;
     private javax.swing.JMenuItem JmCRegistrar;
     private javax.swing.JMenu JmCliente;

@@ -7,7 +7,6 @@ package Cliente;
 import Main.Customer;
 import static Main.MainWindows.getCustomer;
 import java.io.IOException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,14 +14,15 @@ import java.util.logging.Logger;
  *
  * @author David Sandoval Salvador
  */
-public class Register extends javax.swing.JInternalFrame {
+public class DeleteCustomer extends javax.swing.JInternalFrame {
 
     Customer customer = getCustomer();
+    int Answer = -1;
 
     /**
      * Creates new form Registrar
      */
-    public Register() {
+    public DeleteCustomer() {
         initComponents();
 
     }
@@ -53,14 +53,16 @@ public class Register extends javax.swing.JInternalFrame {
         txtAddress = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         jdcBirthdayDate = new com.toedter.calendar.JDateChooser();
-        btnRegistrar = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         txtRUC = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtDNI = new javax.swing.JTextField();
+        btnCheck = new javax.swing.JButton();
 
-        setTitle("Registrar Cliente");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Register_Customer.png"))); // NOI18N
+        setTitle("Eliminar Cliente");
+        setToolTipText("");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/img/deleteCustomer.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -89,27 +91,37 @@ public class Register extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Fecha de Nacimiento:");
 
+        txtName.setEditable(false);
         txtName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtLastName.setEditable(false);
         txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtNationality.setEditable(false);
         txtNationality.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtPhoneNumber.setEditable(false);
         txtPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtCellPhoneNumber.setEditable(false);
         txtCellPhoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtAddress.setEditable(false);
         txtAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        txtAge.setEditable(false);
         txtAge.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        btnRegistrar.setBackground(new java.awt.Color(0, 51, 204));
-        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setText("Resgistrar Cliente");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        jdcBirthdayDate.setBackground(new java.awt.Color(255, 255, 255));
+        jdcBirthdayDate.setEnabled(false);
+
+        btnDelete.setBackground(new java.awt.Color(0, 51, 204));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Eliminar Cliente");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -124,12 +136,23 @@ public class Register extends javax.swing.JInternalFrame {
             }
         });
 
+        txtRUC.setEditable(false);
         txtRUC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("DNI:");
 
         txtDNI.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btnCheck.setBackground(new java.awt.Color(0, 204, 0));
+        btnCheck.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCheck.setForeground(new java.awt.Color(255, 255, 255));
+        btnCheck.setText("Verificar");
+        btnCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,52 +161,56 @@ public class Register extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel10))
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jdcBirthdayDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtLastName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCheck)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNationality))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLastName))
+                        .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCellPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
+                                .addComponent(jLabel4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(jdcBirthdayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(145, 145, 145)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(220, 220, 220)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100)))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,9 +220,10 @@ public class Register extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCheck)
                         .addComponent(jLabel7)
-                        .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
+                        .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
                     .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,42 +249,40 @@ public class Register extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar)
+                    .addComponent(btnDelete)
                     .addComponent(btnSalir))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         try {
-            Customer cst = new Customer(txtDNI.getText(),
-                    txtName.getText(),
-                    txtLastName.getText(),
-                    txtNationality.getText(),
-                    txtPhoneNumber.getText(),
-                    txtCellPhoneNumber.getText(),
-                    txtAddress.getText(),
-                    txtRUC.getText(),
-                    Integer.parseInt(txtAge.getText()),
-                    jdcBirthdayDate.getDate()
-            );
-            customer.Register(this, cst);
+            customer.DeleteRecord(this, Answer);
         } catch (IOException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
         customer.Clean(txtDNI, txtRUC, txtNationality, txtName, txtLastName, txtAddress, jdcBirthdayDate, txtCellPhoneNumber, txtPhoneNumber, txtAge);
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        customer.WindowExit(this, "Registrar Cliente");
+        customer.WindowExit(this, "Eliminar Cliente");
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        try {
+            Answer = customer.Check(this, txtDNI, txtRUC, txtNationality, txtName, txtLastName, txtAddress, jdcBirthdayDate, txtCellPhoneNumber, txtPhoneNumber, txtAge);
+        } catch (IOException ex) {
+            Logger.getLogger(DeleteCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnCheckActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnCheck;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
