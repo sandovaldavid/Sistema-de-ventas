@@ -250,7 +250,6 @@ public class Register extends javax.swing.JInternalFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         customer.WindowExit(this, "Registrar Cliente");
-        System.out.println(getCustomer().getIA());
     }//GEN-LAST:event_btnSalirActionPerformed
 
 
