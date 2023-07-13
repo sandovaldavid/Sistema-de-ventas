@@ -24,7 +24,7 @@ import javax.swing.UIManager;
  */
 public class Archivo {
 
-    private final String FilePath = "C:\\Users\\Sando\\OneDrive\\Documentos\\Programas\\Sistema-de-ventas\\Archivos\\";
+    private final String FilePath = "C:\\Users\\Sando\\OneDrive\\Documentos\\Programas\\Archivos-Sistema-de-ventas\\";
     private String FileName;
     private String FileExtension;
     private File File;
